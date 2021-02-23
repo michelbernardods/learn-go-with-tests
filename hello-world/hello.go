@@ -39,5 +39,4 @@ func main() {
 	fmt.Println("Ola")
 	fmt.Println("Helo")
 	fmt.Println("Bonjour")
-
 }
