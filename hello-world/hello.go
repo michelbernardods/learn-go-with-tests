@@ -12,24 +12,24 @@ const english = "english"
 const espanhol = "espanhol"
 const frances = "frances"
 
-func Ola(nome, idioma string) string {
-	if nome == "" {
-		nome = "world"
+func Hello(name, language string) string {
+	if name == "" {
+		name = "world"
 	}
 
-	return prefixoSaudacao(idioma) + nome
+	return prefixSalutation(language) + name
 }
 
-func prefixoSaudacao(idioma string) (prefixo string) {
-	switch idioma {
+func prefixSalutation(language string) (prefix string) {
+	switch language {
 	case portugues:
-		prefixo = ola
+		prefix = ola
 	case espanhol:
-		prefixo = hola
+		prefix = hola
 	case frances:
-		prefixo = bonjour
+		prefix = bonjour
 	default:
-		prefixo = hello
+		prefix = hello
 	}
 	return
 }

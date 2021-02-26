@@ -2,48 +2,48 @@ package main
 
 import "testing"
 
-func TestOla(t *testing.T) {
+func TestHello(t *testing.T) {
 
-	verificaMensagemCorreta := func(t *testing.T, resultado, esperado string) {
+	checkCorrectMessage := func(t *testing.T, result, expected string) {
 		t.Helper()
-		if resultado != esperado {
-			t.Errorf("resultado '%s', esperado '%s'", resultado, esperado)
+		if result != expected {
+			t.Errorf("result '%s', expected '%s'", result, expected)
 		}
 	}
 
-	t.Run("diz olá para as pessoas", func(t *testing.T) {
-		resultado := Ola("Michel", "")
-		esperado := "Hello Michel"
+	t.Run("say hello to people", func(t *testing.T) {
+		result := Hello("Michel", "")
+		expected := "Hello Michel"
 
-		verificaMensagemCorreta(t, resultado, esperado)
+		checkCorrectMessage(t, result, expected)
 	})
 
-	t.Run("diz 'Olá, mundo' quando uma string vazia for passada", func(t *testing.T) {
-		resultado := Ola("", "")
-		esperado := "Hello world"
+	t.Run("says 'hello world' when an empty string is passed", func(t *testing.T) {
+		result := Hello("", "")
+		expected := "Hello world"
 
-		verificaMensagemCorreta(t, resultado, esperado)
+		checkCorrectMessage(t, result, expected)
 
 	})
 
 	t.Run("in english", func(t *testing.T) {
-		resultado := Ola("Michel", "english")
-		esperado := "Hello Michel"
+		result := Hello("Michel", "english")
+		expected := "Hello Michel"
 
-		verificaMensagemCorreta(t, resultado, esperado)
+		checkCorrectMessage(t, result, expected)
 	})
 
 	t.Run("in espanhol", func(t *testing.T) {
-		resultado := Ola("Michel", "espanhol")
-		esperado := "Hola Michel"
+		result := Hello("Michel", "espanhol")
+		expected := "Hola Michel"
 
-		verificaMensagemCorreta(t, resultado, esperado)
+		checkCorrectMessage(t, result, expected)
 	})
 
 	t.Run("in frances", func(t *testing.T) {
-		resultado := Ola("Michel", "frances")
-		esperado := "Bonjour Michel"
+		result := Hello("Michel", "frances")
+		expected := "Bonjour Michel"
 
-		verificaMensagemCorreta(t, resultado, esperado)
+		checkCorrectMessage(t, result, expected)
 	})
 }
