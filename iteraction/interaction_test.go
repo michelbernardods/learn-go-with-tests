@@ -3,10 +3,10 @@ package main
 import "testing"
 
 func TestRepeat(t *testing.T) {
-	repeticoes := Repeat("a")
-	esperado := "aaaaa"
+	result := Repeat("a")
+	expected := "aaaaa"
 
-	if repeticoes != esperado {
-		t.Errorf("esperado '%s' mas obteve '%s'", esperado, repeticoes)
+	if result != expected {
+		t.Errorf("expected '%s' but result is '%s'", expected, result)
 	}
 }
