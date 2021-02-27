@@ -1,14 +1,27 @@
 package main
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestSumSlice(t *testing.T) {
-	numbers := []int{1, 2, 3, 4, 5}
+	t.Run("Sum total of slice ", func(t *testing.T) {
+		numbers := []int{1, 2, 3, 4, 5}
+		result := Sum(numbers)
+		expected := 15
 
-	result := Sum(numbers)
-	expected := 15
+		if result != expected {
+			t.Errorf("expeted '%d' but result is '%d'. Numbers = %v", expected, result, numbers)
+		}
+	})
 
-	if result != expected {
-		t.Errorf("expeted '%d' but result is '%d'. Numbers = %v", expected, result, numbers)
-	}
+	t.Run("Add two slices and create a new slice with the sum of the two slices", func(t *testing.T) {
+		result := SumSlice([]int{1, 3}, []int{2, 4})
+		expected := []int{4, 6}
+
+		if !reflect.DeepEqual(result, expected) {
+			t.Errorf("expeted '%d' but result is '%d'.", expected, result)
+		}
+	})
 }
