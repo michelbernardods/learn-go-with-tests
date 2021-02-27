@@ -21,7 +21,16 @@ func TestSumSlice(t *testing.T) {
 		expected := []int{4, 6}
 
 		if !reflect.DeepEqual(result, expected) {
-			t.Errorf("expeted '%d' but result is '%d'.", expected, result)
+			t.Errorf("expeted '%v' but result is '%v'.", expected, result)
+		}
+	})
+
+	t.Run("calculates the totals of all 'endings' of each slice", func(t *testing.T) {
+		result := SumTotaFinalSlice([]int{1, 2}, []int{0, 9})
+		expected := []int{2, 9}
+
+		if !reflect.DeepEqual(result, expected) {
+			t.Errorf("expeted '%v' but result is '%v'.", expected, result)
 		}
 	})
 }
