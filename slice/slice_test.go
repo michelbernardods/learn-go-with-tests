@@ -3,7 +3,7 @@ package main
 import "testing"
 
 func TestSumSlice(t *testing.T) {
-	numbers := [5]int{1, 2, 3, 4, 5}
+	numbers := []int{1, 2, 3, 4, 5}
 
 	result := Sum(numbers)
 	expected := 15
