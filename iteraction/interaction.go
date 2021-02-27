@@ -2,10 +2,10 @@ package main
 
 import "fmt"
 
-func Repeat(letter string) string {
+func Repeat(characters string) string {
 	var TotalCharacters string
-	for i := 0; i < 10; i++ {
-		TotalCharacters += letter
+	for i := 0; i < 5; i++ {
+		TotalCharacters += characters
 	}
 	return TotalCharacters
 }
