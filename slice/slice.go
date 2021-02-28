@@ -20,7 +20,7 @@ func SumSlice(numbersToSum ...[]int) []int {
 	return sum
 }
 
-func SumTotaFinalSlice(numbersToSum ...[]int) []int {
+func SumTotalFinalSlice(numbersToSum ...[]int) []int {
 	var sum []int
 	for _, numbers := range numbersToSum {
 		final := numbers[1:]
