@@ -12,7 +12,7 @@ func RepeatString(characters string) string {
 }
 
 func RepeatInteger(integer int) int {
-	var TotalInteger := 0
+	var TotalInteger = 0
 	for i := 0; i < 5; i++ {
 		TotalInteger += integer
 	}
@@ -25,7 +25,7 @@ func RepeatFloat(floating float64) float64 {
 	for i := 0; i < 5; i++ {
 		TotalFloat += floating
 	}
-	
+
 	return TotalFloat
 }
 

@@ -26,7 +26,7 @@ func TestSumSlice(t *testing.T) {
 	})
 
 	t.Run("calculates the totals of all 'endings' of each slice", func(t *testing.T) {
-		result := SumTotaFinalSlice([]int{1, 2}, []int{0, 9})
+		result := SumTotalFinalSlice([]int{1, 2}, []int{0, 9})
 		expected := []int{2, 9}
 
 		if !reflect.DeepEqual(result, expected) {

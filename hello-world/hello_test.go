@@ -28,7 +28,7 @@ func TestHello(t *testing.T) {
 
 	t.Run("in english", func(t *testing.T) {
 		result := Hello("Michel", "english")
-		expected := "Hello michel"
+		expected := "Hello Michel"
 
 		checkCorrectMessage(t, result, expected)
 	})
