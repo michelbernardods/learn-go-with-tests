@@ -5,37 +5,38 @@ import (
 	"math"
 )
 
-type Retangulo struct {
-	Largura float64
-	Altura  float64
+type Rectangle struct {
+	Width  float64
+	Height float64
 }
 
-func (r Retangulo) Area() float64 {
-	return r.Largura * r.Altura
+func (r Rectangle) Area() float64 {
+	return r.Width * r.Height
 }
 
-type Circulo struct {
-	Raio float64
+type Circle struct {
+	Radius float64
 }
 
-func (c Circulo) Area() float64 {
-	return math.Pi * c.Raio * c.Raio
+func (c Circle) Area() float64 {
+	return math.Pi * c.Radius * c.Radius
 }
 
-type Triangulo struct {
+type Triangle struct {
 	Base   float64
-	Altura float64
+	Height float64
 }
 
-func (t Triangulo) Area() float64 {
-	return (t.Base * t.Altura) * 0.5
+func (t Triangle) Area() float64 {
+	return (t.Base * t.Height) * 0.5
 }
 
-type Forma interface {
+type Shape interface {
 	Area() float64
 }
 
 func main() {
-	fmt.Println("Perimetro")
-	fmt.Println("Area")
+	fmt.Println("Rectangle")
+	fmt.Println("Circle")
+	fmt.Println("Triangle")
 }
