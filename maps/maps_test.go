@@ -6,10 +6,10 @@ func TestSearch(t *testing.T) {
 	dictionary := Dicionary{"test": "this is just a test"}
 
 	t.Run("familiar word", func(t *testing.T) {
-		result, _ := dictionary.Search("teste")
+		result, _ := dictionary.Search("test")
 		expected := "this is just a test"
 
-		comparaStrings(t, result, expected)
+		compareStrings(t, result, expected)
 	})
 
 	t.Run("unknown word", func(t *testing.T) {
@@ -23,21 +23,19 @@ func TestSearch(t *testing.T) {
 	t.Run("unknown word", func(t *testing.T) {
 		_, result := dictionary.Search("unknown")
 
-		comparaErro(t, result, ErrNotFound)
+		comparaErr(t, result, ErrNotFound)
 	})
 }
 
-
-
-func comparaStrings(t *testing.T, result, expected string) {
+func compareStrings(t *testing.T, result, expected string) {
 	t.Helper()
 
 	if result != expected {
-		t.Errorf("result '%s', expected '%s', dado '%s'", result, expected, "teste")
+		t.Errorf("result '%s', expected '%s', dado '%s'", result, expected, "test")
 	}
 }
 
-func comparaErro(t *testing.T, result, expected error) {
+func comparaErr(t *testing.T, result, expected error) {
 	t.Helper()
 
 	if result != expected {
@@ -48,70 +46,70 @@ func comparaErro(t *testing.T, result, expected error) {
 func TestAdds(t *testing.T) {
 	t.Run("new word", func(t *testing.T) {
 		dictionary := Dicionary{}
-		word := "teste"
-		definicao := "isso é apenas um teste"
+		word := "test"
+		definition := "this is just a test"
 
-		err := dictionary.Adds(word, definicao)
+		err := dictionary.Adds(word, definition)
 
-		comparaErro(t, err, nil)
-		comparaDefinicao(t, dictionary, word, definicao)
+		comparaErr(t, err, nil)
+		comparaDefinicao(t, dictionary, word, definition)
 	})
 
-	t.Run("word existente", func(t *testing.T) {
-		word := "teste"
-		definicao := "isso é apenas um teste"
-		dictionary := Dicionary{word: definicao}
-		err := dictionary.Adds(word, "teste novo")
+	t.Run("word existing", func(t *testing.T) {
+		word := "test"
+		definition := "this is just a test"
+		dictionary := Dicionary{word: definition}
+		err := dictionary.Adds(word, "test novo")
 
-		comparaErro(t, err, ErrWordNonexistent)
-		comparaDefinicao(t, dictionary, word, definicao)
+		comparaErr(t, err, ErrWordExist)
+		comparaDefinicao(t, dictionary, word, definition)
 	})
 }
 
-func comparaDefinicao(t *testing.T, dictionary Dicionary, word, definicao string) {
+func comparaDefinicao(t *testing.T, dictionary Dicionary, word, definition string) {
 	t.Helper()
 
 	result, err := dictionary.Search(word)
 	if err != nil {
-		t.Fatal("deveria ter encontrado word adicionada:", err)
+		t.Fatal("should have found word added:", err)
 	}
 
-	if definicao != result {
-		t.Errorf("result '%s',  expected '%s'", result, definicao)
+	if definition != result {
+		t.Errorf("result '%s',  expected '%s'", result, definition)
 	}
 }
 
 func TestUpdate(t *testing.T) {
 	t.Run("word existente", func(t *testing.T) {
-		word := "teste"
-		definicao := "isso é apenas um teste"
+		word := "test"
+		definition := "this is just a test"
 		novaDefinicao := "nova definição"
-		dictionary := Dicionary{word: definicao}
+		dictionary := Dicionary{word: definition}
 		err := dictionary.Update(word, novaDefinicao)
 
-		comparaErro(t, err, nil)
+		comparaErr(t, err, nil)
 		comparaDefinicao(t, dictionary, word, novaDefinicao)
 	})
 
 	t.Run("word nova", func(t *testing.T) {
-		word := "teste"
-		definicao := "isso é apenas um teste"
+		word := "test"
+		definition := "this is just a test"
 		dictionary := Dicionary{}
 
-		err := dictionary.Update(word, definicao)
+		err := dictionary.Update(word, definition)
 
-		comparaErro(t, err, ErrWordNonexistent)
+		comparaErr(t, err, ErrWordNonexistent)
 	})
 }
 
 func TestDelete(t *testing.T) {
-	word := "teste"
-	dictionary := Dicionary{word: "definição de teste"}
+	word := "test"
+	dictionary := Dicionary{word: "test definition"}
 
 	dictionary.Delete(word)
 
 	_, err := dictionary.Search(word)
 	if err != ErrNotFound {
-		t.Errorf("espera-se que '%s' seja deletado", word)
+		t.Errorf("expected to be '%s' deleted", word)
 	}
 }
