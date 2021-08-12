@@ -33,7 +33,6 @@ func TestRepeat(t *testing.T) {
 			if got := RepeatFloat(tt.args.numberFloating); got != tt.wantFloat {
 				t.Errorf("Expected = %v, want %v", got, tt.wantFloat)
 			}
-
 		})
 	}
 }
