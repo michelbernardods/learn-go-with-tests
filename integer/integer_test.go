@@ -2,11 +2,24 @@ package main
 
 import "testing"
 
-func SumTestTwoNumbers(t *testing.T) {
-	sum := SumTest(2, 2)
-	result := 4
+func TestSum(t *testing.T) {
+	type args struct {
+		num1 int
+		num2 int
+	}
+	tests := []struct {
+		name string
+		args args
+		want int
+	}{
 
-	if sum != result {
-		t.Errorf("Expected %d result %d ", result, sum)
+		{name: "Sum two numbers", args: args{50, 7}, want: 57},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := SumTest(tt.args.num1, tt.args.num2); got != tt.want {
+				t.Errorf("Expected = %v, want %v", got, tt.want)
+			}
+		})
 	}
 }
